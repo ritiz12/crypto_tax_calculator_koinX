@@ -1,0 +1,44 @@
+
+
+.sidebar-info {
+    background-color: #0052FE;
+  border-radius: 8px;
+  text-align: center;
+  width: 256px;
+  padding: 55px 16px;
+  gap: 35px;
+  position: fixed;
+  top: 120px;
+  right: 20px;
+Height : 370px;
+
+
+  }
+
+  h2 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+  }
+
+  p {
+    color: white;
+    margin: 10px 0;
+    font-weight: 100;
+  }
+
+  button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 237px;
+    height: 58px;
+    font-weight: bold;
+    top: 580px;
+    left: 94.5px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }

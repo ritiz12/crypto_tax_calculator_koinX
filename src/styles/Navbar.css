@@ -1,0 +1,64 @@
+.navbar {
+  background-color: #DEDFE2;
+  color: black;
+  padding: 8px 2 ;
+
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  text-decoration: none;
+  color: blue;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: black;
+font-weight: bold;
+  font-size: 14px;
+  transition: color 0.3s;
+  vertical-align: middle;
+}
+.nav-item:last-child {
+  margin-right: 20px;
+}
+
+.nav-item:first-child {
+  margin-left: 10px;
+}
+
+
+.nav-item button {
+  text-align: center;
+  border:  solid rgb(61, 109, 242);
+  color: blue;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 8px;
+  width: 150px;
+  height: 40px;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+}
