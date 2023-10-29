@@ -7,11 +7,11 @@
   width: 256px;
   padding: 55px 16px;
   gap: 35px;
-  position: fixed;
+
   top: 120px;
   right: 20px;
 Height : 370px;
-
+position: absolute;
 
   }
 
@@ -41,4 +41,19 @@ Height : 370px;
     left: 94.5px;
     border-radius: 8px;
     margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-info {
+      width: 100%;
+      top: 0;
+      right: 0;
+      padding: 20px;
+      height: auto;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+    }
   }

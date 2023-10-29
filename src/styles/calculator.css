@@ -19,7 +19,9 @@
   }
 
   label {
-    font-weight: bold;
+
+    font-size: 15px;
+    font-weight: 600;
   }
 
   div {
@@ -34,7 +36,7 @@
     background-color:
     #EFF2F5;
     Gap : 28px;
-    height: 58px;
+    height: 48px;
 
 
   }
@@ -60,6 +62,7 @@
   p {
     font-size: 16px;
     margin: 10px 0;
+
   }
 
 
@@ -89,7 +92,7 @@
     border-radius: 3px;
     background-color: #e9ebef;
     color: black;
-    height: 58px;
+    height: 48px;
 
   }
 
@@ -99,9 +102,9 @@
 border-radius: 0.3rem;
 box-sizing: border-box;
 flex-shrink: 0;
-height: 50%;
+height: 7cap;
 margin-right: 7.75rem;
-width: 12.75rem;
+width: 100%;
 
 font-size: 16px;
 color: black;
@@ -115,10 +118,10 @@ font-weight: 500;
 border-radius: 0.3rem;
 box-sizing: border-box;
 flex-shrink: 0;
-height: 50%;
+height: 7cap;
 margin-right: 7.75rem;
 padding: 1.125rem 1.601rem 1.525rem 1.549rem;
-width: 12.75rem;
+width: 100%;
 font-size: 16px;
 color: black;
 font-weight: 500;
@@ -127,9 +130,67 @@ font-weight: 500;
 
   .column-container {
     display: flex;
-    justify-content: space-between; /* Space between the columns */
+    justify-content: space-between;
   }
 
   .column {
-    width: 45%; /* Adjust the width as needed */
+    width: 45%;
   }
+
+
+.column .button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.button-container button {
+  background-color: #e1e1e1;
+  border: none;
+  padding: 5px 5px;
+  cursor: pointer;
+  height: 48px;
+  margin-top: 4px;
+}
+
+
+.button-container button.active {
+  background-color: rgb(180, 179, 246);
+  color: #fff;
+  border-color: blue;
+  border-radius: 10px;
+  border-width: 50px;
+}
+
+#out4{
+  width: 100%;
+  padding: 5px;
+
+  border-radius: 3px;
+  background-color: #e9ebef;
+  color: black;
+  height: 48px;
+}
+
+@media (max-width: 768px) {
+  .calculator {
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+}
+
+#out5{
+  background-color: white;
+  color: black;
+
+padding: 10px;
+
+
+}
+#out6{
+  background-color: white;
+  color: black;
+  font: bold;
+  font-weight: 500;
+}
