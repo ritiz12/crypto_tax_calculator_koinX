@@ -3,17 +3,18 @@
 
 
 .calculator {
-    background-color: #f4f4f4;
+    background-color: white;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 300px;
+    width: 700px;
     margin: 0 auto;
     text-align: left;
+
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 34px;
     text-align: center;
   }
 
@@ -28,31 +29,28 @@
   input {
     width: 100%;
     padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    border: 1px  hwb(0 80% 20%);
+
+    background-color:
+    #EFF2F5;
+    Gap : 28px;
+    height: 58px;
+
+
   }
 
   select {
     width: 100%;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px  #DEDFE2;
     border-radius: 3px;
+    background-color:
+    #EFF2F5;
+    height: 58px;
+
   }
 
-  button {
-    display: block;
-    width: 100%;
-    background-color: #007BFF;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
 
-  button:hover {
-    background-color: #0056b3;
-  }
 
   h2 {
     margin-top: 20px;
@@ -76,7 +74,9 @@
     font-size: 16px;
     margin: 10px 0;
     text-align: center;
-   color:black
+   color:black;
+   height: 58px;
+
   }
   .output_class label {
     font-weight: bold;
@@ -85,12 +85,17 @@
   #out1 {
     width: 100%;
     padding: 5px;
-    border: 1px solid black;
+
     border-radius: 3px;
+    background-color: #e9ebef;
+    color: black;
+    height: 58px;
+
   }
 
   #out2{
-    background-color: rgba(129, 215, 148, 0.24);
+    background-color:
+    #EBF9F4;
 border-radius: 0.3rem;
 box-sizing: border-box;
 flex-shrink: 0;
@@ -98,12 +103,15 @@ height: 50%;
 margin-right: 7.75rem;
 width: 12.75rem;
 
-
-
+font-size: 16px;
+color: black;
+padding: 1.125rem 1.601rem 1.525rem 1.549rem;
+font-weight: 500;
   }
 
   #out3{
-    background-color: rgba(215, 129, 214, 0.881);
+    background-color:
+    #EBF2FF;
 border-radius: 0.3rem;
 box-sizing: border-box;
 flex-shrink: 0;
@@ -111,7 +119,17 @@ height: 50%;
 margin-right: 7.75rem;
 padding: 1.125rem 1.601rem 1.525rem 1.549rem;
 width: 12.75rem;
+font-size: 16px;
+color: black;
+font-weight: 500;
 
+  }
 
+  .column-container {
+    display: flex;
+    justify-content: space-between; /* Space between the columns */
+  }
 
+  .column {
+    width: 45%; /* Adjust the width as needed */
   }

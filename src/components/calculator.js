@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import '../styles/calculator.css'; // Import your CSS file
 
 function Calculator() {
@@ -13,15 +14,7 @@ function Calculator() {
   const [netCapitalGains, setNetCapitalGains] = useState(0);
   const [taxToPay, setTaxToPay] = useState(0);
 
-  const [number1, setNumber1] = useState(0);
-  const [number2, setNumber2] = useState(0);
-  const [result, setResult] = useState(0);
-
-  const calculateSum = () => {
-    setResult(Number(number1) + Number(number2));
-  };
-
-  const calculateTax = () => {
+  useEffect(() => {
     const capitalGainsAmount = salePrice - purchasePrice - expenses;
     let taxRate = '';
     let taxToPay = 0;
@@ -34,7 +27,6 @@ function Calculator() {
 
       const netCapitalGains = capitalGainsAmount - discount;
 
-      // Calculate tax rate based on annual income range
       switch (annualIncome) {
         case '$0 - $18200':
           taxRate = '0%';
@@ -62,95 +54,107 @@ function Calculator() {
       setNetCapitalGains(netCapitalGains);
       setTaxToPay(taxToPay);
     } else {
-      // Handle Short Term calculations here
-      // Hide the Long Term related fields
       setTaxRate('Short Term Tax Rate Logic');
       setCapitalGainsAmount(capitalGainsAmount);
       setLongTermDiscount(0);
       setNetCapitalGains(capitalGainsAmount);
-      setTaxToPay(0); // Calculate Short Term tax here
+      setTaxToPay(0);
     }
+  }, [purchasePrice, salePrice, expenses, investmentType, annualIncome]);
+
+  // Function to format currency input
+  const formatCurrency = (value) => {
+    return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   };
 
   return (
     <div className="calculator">
-      <h1>Crypto Tax Calculator for Australia</h1>
-      <div>
-        <label>Financial Year</label>
-        <select  >
-          <option value="FY 2023-24">FY 2023-24</option>
+      <h1>Free Crypto Tax Calculator Australia</h1>
+      <div className="column-container">
+        <div className="column">
+          <div>
+            <label>Financial Year</label>
+            <select>
+              <option value="FY 2023-24">FY 2023-24</option>
+            </select>
+          </div>
+          <div>
+            <label>Purchase Price:</label>
+            <input
+              type="text"
+              value={formatCurrency(purchasePrice)}
+              onChange={(e) => setPurchasePrice(Number(e.target.value.replace(/\$/g, '').replace(/,/g, '')))
+              }
+            />
+          </div>
+          <div>
+            <label>Expenses:</label>
+            <input
+              type="text"
+              value={formatCurrency(expenses)}
+              onChange={(e) => setExpenses(Number(e.target.value.replace(/\$/g, '').replace(/,/g, '')))
+              }
+            />
+          </div>
+          <div>
+            <label>Annual Income:</label>
+            <select
+              value={annualIncome}
+              onChange={(e) => setAnnualIncome(e.target.value)}
+            >
+              <option value="$0 - $18200">$0 - $18200</option>
+              <option value="$18201 - $45000">$18201 - $45000</option>
+              <option value="$45001 - $120000">$45001 - $120000</option>
+            </select>
+          </div>
+          <div>
+            <label>Capital Gains Amount:</label>
+            <p id="out1">{`${formatCurrency(capitalGainsAmount)}`}</p>
+          </div>
+          <div>
+            <p id="out2">Net Capital Gains Amount {`${formatCurrency(netCapitalGains)}`}</p>
+          </div>
+        </div>
+        <div className="column">
+          <div>
+            <label>Country</label>
+            <select>
+              <option value="Country">Australia</option>
+            </select>
+          </div>
+          <div>
+            <label>Sale Price:</label>
+            <input
+              type="text"
+              value={formatCurrency(salePrice)}
+              onChange={(e) => setSalePrice(Number(e.target.value.replace(/\$/g, '').replace(/,/g, '')))
+              }
+            />
+          </div>
+          <div>
+            <label>Investment Type:</label>
+            <select
+              value={investmentType}
+              onChange={(e) => setInvestmentType(e.target.value)}
+            >
+              <option value="Long Term">Long Term</option>
+              <option value="Short Term">Short Term</option>
+            </select>
+          </div>
+          <div>
+            <label>Tax Rate:</label>
+            <p id="out1">{taxRate}</p>
+          </div>
+          <div>
+            <label>Discount for long-term gains:</label>
+            {investmentType === 'Long Term' && <p id="out1">{`${formatCurrency(longTermDiscount)}`}</p>}
+          </div>
+          <div>
 
-          {/* Add more fiscal years as needed */}
-        </select>
+            <p id="out3">Tax you need to pay {`${formatCurrency(taxToPay)}`}</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <label>Country</label>
-        <select  >
-          <option value="Countery">Australia</option>
-
-          {/* Add more fiscal years as needed */}
-        </select>
-      </div>
-      <div>
-        <label>Purchase Price:</label>
-        <input
-          type="number"
-          value={purchasePrice}
-          onChange={(e) => setPurchasePrice(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Sale Price:</label>
-        <input
-          type="number"
-          value={salePrice}
-          onChange={(e) => setSalePrice(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Expenses:</label>
-        <input
-          type="number"
-          value={expenses}
-          onChange={(e) => setExpenses(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Investment Type:</label>
-        <select
-          value={investmentType}
-          onChange={(e) => setInvestmentType(e.target.value)}
-        >
-          <option value="Long Term">Long Term</option>
-          <option value="Short Term">Short Term</option>
-        </select>
-      </div>
-      <div>
-        <label>Annual Income:</label>
-        <select
-          value={annualIncome}
-          onChange={(e) => setAnnualIncome(e.target.value)}
-        >
-          <option value="$0 - $18200">$0 - $18200</option>
-          <option value="$18201 - $45000">$18201 - $45000</option>
-          <option value="$45001 - $120000">$45001 - $120000</option>
-        </select>
-      </div>
-      <button onClick={calculateTax}>Calculate Tax</button>
-      <div className='output_class'>
-      <label>Tax Rate</label>
-        <p id='out1'>{taxRate}</p>
-        <label>Capital Gains Amount </label>
-        <p  id='out1'> {capitalGainsAmount}</p>
-        <label>Discount for long term gains </label>
-        {investmentType === 'Long Term' && (
-
-          <p  id='out1'> {longTermDiscount}</p>
-        )}
-        <p id='out2'>Net Capital Gains tax Amount {netCapitalGains}</p>
-        <p id='out3'>Tax you need to pay{taxToPay}</p>
-      </div>
-
     </div>
   );
 }
