@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/calculator.css'; // Import your CSS file
+import '../styles/calculator.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
 
 function Calculator() {
   const [purchasePrice, setPurchasePrice] = useState(0);
@@ -73,7 +76,7 @@ function Calculator() {
 
   const handleInputChange = (event, setter) => {
     const inputValue = event.target.value;
-    // Remove any non-numeric characters and trailing decimal point
+
     const numericValue = inputValue.replace(/[^0-9.]/g, '');
     setter(numericValue);
   };
@@ -89,8 +92,9 @@ function Calculator() {
               <option value="FY 2023-24">FY 2023-24</option>
             </select>
           </div>
+
           <div>
-            <label>Purchase Price</label>
+            <label>Enter purchase Price of Crypto</label>
             <input
               type="text"
               value={formatCurrency(purchasePrice)}
@@ -98,7 +102,7 @@ function Calculator() {
             />
           </div>
           <div>
-            <label>Expenses</label>
+            <label>Enter your Expenses</label>
             <input
               type="text"
               value={formatCurrency(expenses)}
@@ -106,7 +110,7 @@ function Calculator() {
             />
           </div>
           <div>
-            <label>Annual Income</label>
+            <label>Select Your Annual Income</label>
             <select
               value={annualIncome}
               onChange={(e) => setAnnualIncome(e.target.value)}
@@ -119,22 +123,24 @@ function Calculator() {
             </select>
           </div>
           <div>
-            <label>Capital Gains Amount</label>
+            <label>Capital Gains amount</label>
             <p id="out1">{`${formatCurrency(capitalGainsAmount)}`}</p>
           </div>
           <div>
-            <p id="out2">Net Capital Gains Amount <br/>{`${formatCurrency(netCapitalGains)}`}</p>
+          <p id="out2"> <span style={{ color: 'black' }}>Net Capital Gains Amount</span><br/>{formatCurrency(netCapitalGains)}</p>
+
           </div>
         </div>
         <div className="column">
           <div>
+
             <label>Country</label>
             <select>
-              <option value="Country">Australia</option>
+              <option value="Country">🌎  Australia</option>
             </select>
           </div>
           <div>
-            <label>Sale Price</label>
+            <label>Enter sale price of Crypto</label>
             <input
               type="text"
               value={formatCurrency(salePrice)}
@@ -161,18 +167,20 @@ function Calculator() {
               </button>
 
             </div>
-            <p id = "out6">  &nbsp; &nbsp; 12 &lt; month    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;     12 &gt; months</p>
+            <p id = "out6">  &nbsp; &nbsp;  &lt; 12  months     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;      &gt; 12 months</p>
           </div>
           <div >
 
             <p id="out5">Tax Rate <br/>{taxRate}</p>
           </div>
           <div>
-            <label>Discount for long-term gains:</label>
+            <label>Discount for long-term gains</label>
             <p id='out4'>{`${formatCurrency(longTermDiscount)}`}</p>
           </div>
           <div>
-            <p id="out3">Tax you need to pay  <br/>{`${formatCurrency(  taxToPay)}`}</p>
+          <p id="out3"><span style={{ color: 'black' }}>The Tax you need to pay</span> <br/>{formatCurrency(taxToPay)}</p>
+
+
           </div>
         </div>
       </div>

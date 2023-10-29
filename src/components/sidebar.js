@@ -13,7 +13,7 @@ const sidebar = () => {
         alt=''
         style={{ width: '178px', height: '150px' }}
       />
-      <button>Get Started for FREE {'->'} </button>
+      <button>Get Started for FREE {'→'} </button>
     </div>
   );
 };
